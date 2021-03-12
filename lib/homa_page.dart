@@ -21,22 +21,46 @@ class _HomePageState extends State<HomePage> {
         title: Text("Home"),
       ),
       body: Container(
-        child: Column(
-          children: [
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(hintText: "Text Input"),
-              onChanged: (v) {
-                setData(v);
-              },
+        child: Form(
+          child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: ListView(
+              children: [
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(hintText: "Fast name"),
+                  onChanged: (v) {
+                    setData(v);
+                  },
+                ),
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(hintText: "Second name"),
+                ),
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(hintText: "Phone"),
+                ),
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(hintText: "Email"),
+                ),
+                TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(hintText: "password"),
+                  textInputAction: TextInputAction.done,
+                ),
+                RaisedButton(
+                    child: Text("submit"),
+                    onPressed: () {
+                      setState(() {
+                        text = _controller.text;
+                      });
+                    }),
+                Text(text != null ? "$text" : ""),
+              ],
             ),
-            RaisedButton(onPressed: () {
-              setState(() {
-                text = _controller.text;
-              });
-            }),
-            Text(text != null ? "$text" : ""),
-          ],
+          ),
         ),
       ),
     );
