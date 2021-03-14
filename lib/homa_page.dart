@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/state/globalState.dart';
+import 'package:shop_app/state/user.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -8,8 +11,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _formKey = GlobalKey<FormState>();
-  String first_name = "";
-  String last_name = "";
+  String username = "";
+  String fullname = "";
   String email = "";
   String password = "";
   var phone;
@@ -19,8 +22,14 @@ class _HomePageState extends State<HomePage> {
       return;
     }
     _formKey.currentState.save();
-    print(first_name);
-    print(last_name);
+    User newUser = User(
+        id: DateTime.now().toString(),
+        username: username,
+        email: email,
+        fullName: fullname);
+    Provider.of<GlobalState>(context, listen: false).addUsers(newUser);
+    print(username);
+    print(fullname);
     print(email);
     print(phone);
   }
@@ -43,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                   //controller: _controller,
                   decoration: InputDecoration(hintText: "Fast name"),
                   onSaved: (v) {
-                    first_name = v;
+                    username = v;
                   },
                   validator: (v) {
                     if (v.isEmpty) {
@@ -57,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                   //controller: _controller,
                   decoration: InputDecoration(hintText: "Second name"),
                   onSaved: (v) {
-                    last_name = v;
+                    fullname = v;
                   },
                   validator: (v) {
                     if (v.isEmpty) {

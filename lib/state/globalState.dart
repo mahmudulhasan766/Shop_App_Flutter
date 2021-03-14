@@ -37,4 +37,15 @@ class GlobalState with ChangeNotifier {
   List<User> get users {
     return [..._user];
   }
+
+  void addUsers(User newUser) {
+    // final newUser = User(
+    //   id: DateTime.now().toString(),
+    //   username: user.username,
+    //   fullName: user.fullName,
+    //   email: user.email,
+    // );
+    _user.add(newUser);
+    notifyListeners();
+  }
 }
