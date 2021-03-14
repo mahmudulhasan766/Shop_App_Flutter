@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/about_page.dart';
 import 'package:shop_app/homa_page.dart';
+import 'package:shop_app/state/about_consumer.dart';
 import 'package:shop_app/state/globalState.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       create: (ctx) => GlobalState(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: AboutScreen(),
+        home: AboutConsumer(),
       ),
     );
   }
