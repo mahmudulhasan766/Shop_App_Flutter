@@ -19,15 +19,26 @@ class AboutScreen extends StatelessWidget {
               return Container(
                 child: Column(
                   children: [
-                    Text(allusers[int].username),
-                    Divider(),
-                    Text(allusers[int].id),
-                    Divider(),
-                    Text(allusers[int].fullName),
-                    Divider(),
-                    Text(allusers[int].email),
-                    Divider(
-                      thickness: 4,
+                    Card(
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                height: (34),
+                                child: Text(allusers[int].username),
+                              ),
+                              Text(allusers[int].id),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(allusers[int].fullName),
+                              Text(allusers[int].email),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ],
                 ),

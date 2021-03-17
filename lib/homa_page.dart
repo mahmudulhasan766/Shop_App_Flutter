@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final userDate = Provider.of<GlobalState>(context).users;
     return Scaffold(
       appBar: AppBar(
         title: Text("Home"),
